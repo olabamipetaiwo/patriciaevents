@@ -1,0 +1,16 @@
+@import url('../assets//fonts//brfirma/fonts.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Tailwind Styles
+@layer components {
+  html {
+    font-size: 90%;
+    font-family: 'BR Firma', sans-serif;
+  }
+
+  body {
+    font-family: 'BR Firma', sans-serif;
+  }
+}
