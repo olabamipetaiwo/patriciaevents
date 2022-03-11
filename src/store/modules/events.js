@@ -64,19 +64,22 @@ export default {
       }
     },
     filterEvents({ state, commit }, searchInput) {
-      const regEx = new RegExp(`${searchInput}`, "gi");
-      commit(SET_FILTER, searchInput);
-      const result = state.allEvents.filter((eventItem) => {
-        return (
-          // eventItem?.title.match(regEx) ||
-          eventItem?.artist?.name.match(regEx) ||
-          eventItem?.description.match(regEx) ||
-          eventItem?.venue?.name.match(regEx) ||
-          eventItem?.venue?.location.match(regEx)
-        );
-      });
-
-      commit(FETCH_FILTERED_EVENTS, result);
+      try {
+        const regEx = new RegExp(`${searchInput}`, "gi");
+        commit(SET_FILTER, searchInput);
+        const result = state.allEvents.filter((eventItem) => {
+          return (
+            // eventItem?.title.match(regEx) ||
+            eventItem?.artist?.name.match(regEx) ||
+            eventItem?.description.match(regEx) ||
+            eventItem?.venue?.name.match(regEx) ||
+            eventItem?.venue?.location.match(regEx)
+          );
+        });
+        commit(FETCH_FILTERED_EVENTS, result);
+      } catch (err) {
+        //handle error
+      }
     },
   },
 };

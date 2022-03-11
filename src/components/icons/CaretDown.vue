@@ -16,12 +16,6 @@
 
 <script>
 export default {
-  name: "LocationIcon",
+  name: "CaretDownIcon",
 }
 </script>
-
-<style scoped>
-.my-svg-component {
-  /* Scoped CSS here */
-}
-</style>

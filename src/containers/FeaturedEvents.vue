@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from "vuex"
-import FeaturedEventCard from "../components/FeaturedCard.vue"
+import FeaturedEventCard from "../components/FeaturedEventCard.vue"
 
 export default {
   components: { FeaturedEventCard },

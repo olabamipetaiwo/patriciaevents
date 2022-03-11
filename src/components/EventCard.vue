@@ -1,4 +1,3 @@
-/* eslint-disable vue/no-parsing-error */
 <template>
   <div class="all__events__card">
     <figure>
