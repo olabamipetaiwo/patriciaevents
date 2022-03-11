@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
+import events from "./modules/events";
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    events,
+  },
 });

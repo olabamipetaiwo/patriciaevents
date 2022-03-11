@@ -6,11 +6,67 @@
 // Tailwind Styles
 @layer components {
   html {
-    font-size: 90%;
     font-family: 'BR Firma', sans-serif;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    // font-size: 62.5%;
+
+    @media only screen and (min-width: 96rem) {
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 80rem) {
+      font-size: 15px;
+    }
+
+    @media only screen and (max-width: 48rem) {
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 37.5rem) {
+      font-size: 12px;
+    }
   }
 
   body {
     font-family: 'BR Firma', sans-serif;
+  }
+
+  .text-header {
+    @apply font-display text-base text-dark font-semibold;
+  }
+
+  .text-title {
+    @apply font-display text-sm text-dark font-bold;
+  }
+
+  .search__input {
+    @apply flex items-center p-4 bg-white border-grey-two border-2 rounded-lg max-w-md;
+
+    svg {
+      @apply flex-shrink-0;
+    }
+
+    input {
+      @apply ml-2 flex-grow bg-transparent text-grey-four outline-none text-sm font-display placeholder-grey-four;
+    }
+  }
+
+  .btn {
+    @apply font-semibold text-base rounded-2xl py-3  px-5 transition-all;
+  }
+
+  .btn-outline {
+    @apply border-2 text-primary-main border-primary-main bg-transparent;
+    border-width: 1.375px;
+    min-width: 91px;
+
+    &:hover {
+      @apply bg-primary-main text-white border-primary-main;
+    }
   }
 }
