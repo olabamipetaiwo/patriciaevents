@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       borderRadius: {
         xxs: "0.625rem",
+        half: "50%",
       },
       fontSize: {
         xxs: ["0.625rem", "0.75rem"],
@@ -48,6 +49,9 @@ module.exports = {
       },
       screens: {
         container: "68rem",
+      },
+      boxShadow: {
+        btn: "0px 4px 10px rgba(36, 79, 190, 0.1)",
       },
     },
   },

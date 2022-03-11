@@ -6,7 +6,7 @@
   </section>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="css" scoped>
 .container {
   @apply mx-auto w-full max-w-container px-10 container:px-0;
 }

@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from "vuex"
-import FeaturedEventCard from "../components/FeaturedEventCard.vue"
+import FeaturedEventCard from "../FeaturedEventCard.vue"
 
 export default {
   components: { FeaturedEventCard },
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="css" scoped>
 .featured__events {
   @apply grid gap-6 grid-cols-1 sm:grid-cols-featured__events;
 }

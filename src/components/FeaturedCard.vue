@@ -3,7 +3,7 @@
     <figure>
       <img
         class="w-full h-full object-cover"
-        src="../assets/event.jpg"
+        v-bind:src="eventItem?.artist.thumb_url"
         alt="Event Image"
       />
     </figure>
@@ -22,9 +22,11 @@
         </div>
         <div class="flex items-center">
           <ticket-icon class="mr-2" />
-          <p>
-            Starting from
-            <span>15,000</span>
+          <p class="flex items-center">
+            <span class="mr-2">Starting from</span>
+            <span class="font-semibold text-base text-primary-main">
+              ₦&nbsp;3,000
+            </span>
           </p>
         </div>
       </div>
@@ -58,7 +60,7 @@ export default {
   flex-basis: 33rem;
 
   @media only screen and (max-width: 37.5rem) {
-   flex-basis: 100%;
+    flex-basis: 100%;
   }
 }
 

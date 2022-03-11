@@ -6,6 +6,7 @@ import "./styles/main.scss";
 // import Dayjs from "vue-dayjs";
 
 import CaretDownIcon from "./components/icons/CaretDown.vue";
+import CaretRightIcon from "./components/icons/CaretRight.vue";
 import DateIcon from "./components/icons/Date.vue";
 import LocationIcon from "./components/icons/Location.vue";
 import NairaIcon from "./components/icons/Naira.vue";
@@ -15,6 +16,7 @@ import TicketIcon from "./components/icons/Ticket.vue";
 const app = createApp(App);
 
 app.component("caret-down-icon", CaretDownIcon);
+app.component("caret-right-icon", CaretRightIcon);
 app.component("date-icon", DateIcon);
 app.component("location-icon", LocationIcon);
 app.component("naira-icon", NairaIcon);

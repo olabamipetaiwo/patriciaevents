@@ -3,7 +3,7 @@
     <figure>
       <img
         class="w-full h-full object-cover"
-         src="../assets/event.jpg"
+        src="../assets/event.jpg"
         alt="Event Image"
       />
     </figure>
@@ -22,9 +22,11 @@
       </div>
       <div class="flex items-center mb-3">
         <ticket-icon class="mr-2" />
-        <p>
-          Starting from
-          <span>{{ eventItem.id }}</span>
+        <p class="flex items-center">
+          <span class="mr-2">Starting from</span>
+          <span class="font-semibold text-base text-primary-main">
+            ₦&nbsp;3,000
+          </span>
         </p>
       </div>
       <div>
@@ -42,9 +44,6 @@
 </template>
 
 <script>
-
-
-
 export default {
   name: "EventCard",
   props: {
@@ -56,8 +55,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
-
+<style lang="scss" scoped>
 .all__events__card {
   @apply w-full bg-white p-4 min-h-300 rounded-xxs;
 }
@@ -80,9 +78,6 @@ p {
 }
 
 a {
-  @apply py-2 text-xs rounded-md cursor-pointer;
+  @apply w-full sm:w-max  py-2 text-xs rounded-md cursor-pointer;
 }
 </style>
-
-
-

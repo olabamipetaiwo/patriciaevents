@@ -6,6 +6,7 @@ import {
   FETCHING_EVENTS,
   SET_FILTER,
   SET_ERROR,
+  CLEAR_ERROR,
 } from "../types";
 
 export default {
@@ -39,6 +40,7 @@ export default {
       state.allEvents = events;
       state.filteredEvents = events;
       state.fetchingEvents = false;
+      state.error = null;
     },
     [FETCH_FILTERED_EVENTS](state, events) {
       state.filteredEvents = events;
@@ -51,6 +53,9 @@ export default {
     },
     [SET_ERROR](state, error) {
       state.error = error;
+    },
+    [CLEAR_ERROR](state) {
+      state.error = null;
     },
   },
   actions: {
@@ -65,6 +70,7 @@ export default {
     },
     filterEvents({ state, commit }, searchInput) {
       try {
+        commit(CLEAR_ERROR);
         const regEx = new RegExp(`${searchInput}`, "gi");
         commit(SET_FILTER, searchInput);
         const result = state.allEvents.filter((eventItem) => {
@@ -78,7 +84,7 @@ export default {
         });
         commit(FETCH_FILTERED_EVENTS, result);
       } catch (err) {
-        //handle error
+        commit(SET_ERROR, `Invalid SearchInpuut ${searchInput}`);
       }
     },
   },

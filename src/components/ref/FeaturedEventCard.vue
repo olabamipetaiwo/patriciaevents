@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="css" scoped>
 .featured__events__card {
   @apply w-full bg-white h-80 p-4;
 }
