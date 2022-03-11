@@ -8,7 +8,6 @@
 
 <style lang="postcss" scoped>
 .container {
-  @apply mx-auto w-full;
-  max-width: 1088px;
+  @apply mx-auto w-full max-w-container px-10 container:px-0;
 }
 </style>

@@ -3,21 +3,21 @@
     <figure>
       <img
         class="w-full h-full object-cover"
-        src="../assets/event.jpg"
+        v-bind:src="eventItem?.artist.thumb_url"
         alt="Event Image"
       />
     </figure>
-    <h2 class="text-title mb-3">Wizkid in Warri</h2>
+    <h2 class="text-title mb-3">{{ eventItem.title || 'Event Title' }}</h2>
     <div class="flex items-center justify-between">
       <div class="flex flex-col">
         <div class="flex items-center mb-4">
           <div class="flex items-center mr-7">
             <location-icon class="mr-2" />
-            <p>Lagos</p>
+            <p>{{ eventItem.venue.location }}</p>
           </div>
           <div class="flex items-center">
             <date-icon class="mr-2" />
-            <p>8th December, 2021</p>
+            <p>{{ new Date(eventItem.datetime).getDate() }}</p>
           </div>
         </div>
         <div class="flex items-center">
@@ -28,17 +28,27 @@
           </p>
         </div>
       </div>
-      <button class="btn btn-outline">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline"
+        :href="eventItem.url"
+      >
         Buy Ticket
-      </button>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // eslint-disable-next-line quotes
-  name: 'FeaturedEventCard',
+  name: "FeaturedEventCard",
+  props: {
+    eventItem: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 

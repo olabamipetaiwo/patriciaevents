@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./styles/main.scss";
+// import Dayjs from "vue-dayjs";
 
 import CaretDownIcon from "./components/icons/CaretDown.vue";
 import DateIcon from "./components/icons/Date.vue";
@@ -19,5 +20,9 @@ app.component("location-icon", LocationIcon);
 app.component("naira-icon", NairaIcon);
 app.component("search-icon", SearchIcon);
 app.component("ticket-icon", TicketIcon);
+
+// app.use(Dayjs, {
+//   lang: "en",
+// });
 
 app.use(store).use(router).mount("#app");

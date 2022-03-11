@@ -11,7 +11,7 @@
     <div class="flex justify-between items-start mb-3">
       <h2 class="text-title">{{ eventItem.title || 'Event Title' }}</h2>
       <div class="date-badge">
-        <h4>{{ eventItem.datetime }}</h4>
+        <h4>{{ eventItem.title || '31 Oct' }}</h4>
       </div>
     </div>
     <div class="flex flex-col">
@@ -43,8 +43,7 @@
 </template>
 
 <script>
-// <!-- src="../assets/event.jpg" -->
-        // v-bind:src="eventItem?.artist.thumb_url"
+
 
 
 export default {
