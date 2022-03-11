@@ -24,7 +24,7 @@
         </div>
       </div>
     </header>
-   
+
     <section class="grid lg:grid-cols-4 gap-8" v-if="fetchingEvents">
       <loader v-for="_item in this.loaders" :key="_item" />
     </section>
@@ -91,6 +91,7 @@ export default {
   methods: {
     ...mapActions("events", ["filterEvents"]),
   },
+
   data() {
     return {
       loaders: Array(4)
