@@ -6,7 +6,6 @@ module.exports = {
   ],
   purge: [],
   darkMode: false,
-
   theme: {
     fontFamily: {
       display: ["BR Firma", "sans-serif"],
@@ -21,12 +20,15 @@ module.exports = {
       minHeight: {
         300: "18.75rem",
       },
+      maxWidth: {
+        container: "68rem",
+      },
       backgroundImage: {
         badge: "url('/src/assets/badge.png')",
       },
       gridTemplateColumns: {
-        all__events: "repeat(auto-fit, minmax(250px, 1fr))",
-        featured__events: "repeat(auto-fit, minmax(524px, 1fr))",
+        all__events: "repeat(auto-fit, minmax(15.625rem, 1fr))",
+        featured__events: "repeat(auto-fit, minmax(32.75rem, 32.75rem))",
       },
       colors: {
         dark: "#2F2F2F",
@@ -43,6 +45,9 @@ module.exports = {
         secondary: {
           main: "#FF6A2C",
         },
+      },
+      screens: {
+        container: "68rem",
       },
     },
   },

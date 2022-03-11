@@ -23,6 +23,6 @@ export default {
 
 <style lang="postcss" scoped>
 .all__events {
-  @apply grid gap-6 grid-cols-all__events;
+  @apply grid gap-6 grid-cols-1 sm:grid-cols-all__events;
 }
 </style>

@@ -24,30 +24,47 @@
         </div>
       </div>
     </header>
-    <section v-if="fetchingEvents">
-      <h4>Loading</h4>
+
+    <section class="grid lg:grid-cols-4 gap-8" v-if="fetchingEvents">
+      <loader v-for="_item in this.loaders" :key="_item" />
     </section>
-    <section class="flex flex-col" v-else>
+    <fragment v-else>
       <search-events />
-      <section class="flex flex-col mb-5">
-        <h3 class="text-header mb-5" v-if="getFeaturedEventsLength > 0">
-          Featured Events {{getFeaturedEventsLength}}
-        </h3>
-        <featured-events />
-      </section>
-      <section class="flex flex-col mb-5" v-if="getFilteredEventsLength > 0">
-        <h3 class="text-header mb-5">All Events</h3>
-        <all-events />
-      </section>
-      <section class="flex flex-col mb-5" v-else>
-        <h3 class="text-header mb-5">
-          No events match for the current keyword
-          <span class="text-primary-main font-bold text-sm font-display">
-            {{ filterKeyWord }}
-          </span>
-        </h3>
-      </section>
-    </section>
+      <!-- Featured Events -->
+      <fragment>
+        <fragment v-if="getFeaturedEventsLength > 0">
+          <section class="flex flex-col mb-5">
+            <h3 class="text-header mb-5" v-if="getFeaturedEventsLength > 0">
+              Featured Events
+            </h3>
+            <featured-events />
+          </section>
+        </fragment>
+        <section class="flex flex-col mb-5" v-else>
+          <h3 class="text-header mb-5">
+            No featured events at the moment
+          </h3>
+        </section>
+      </fragment>
+      <!-- Featured Events -->
+
+      <!-- All Events -->
+      <fragment>
+        <section class="flex flex-col mb-5" v-if="getFilteredEventsLength > 0">
+          <h3 class="text-header mb-5">All Events</h3>
+          <all-events />
+        </section>
+        <section class="flex flex-col mb-5" v-else>
+          <h3 class="text-header mb-5">
+            No events match for the current keyword
+            <span class="text-primary-main font-bold text-sm font-display">
+              {{ filterKeyWord }}
+            </span>
+          </h3>
+        </section>
+      </fragment>
+      <!-- All Events -->
+    </fragment>
   </section>
 </template>
 
@@ -56,9 +73,10 @@ import { mapState, mapActions, mapGetters } from "vuex"
 import FeaturedEvents from "@/containers/FeaturedEvents.vue"
 import AllEvents from "@/containers/AllEvents.vue"
 import SearchEvents from "@/components/SearchEvents.vue"
+import Loader from "@/components/Loader.vue"
 
 export default {
-  components: { FeaturedEvents, AllEvents, SearchEvents },
+  components: { FeaturedEvents, AllEvents, SearchEvents, Loader },
   name: "Home",
   created() {
     this.$store.dispatch("events/fetchEvents")
@@ -72,6 +90,14 @@ export default {
   },
   methods: {
     ...mapActions("events", ["filterEvents"]),
+  },
+
+  data() {
+    return {
+      loaders: Array(4)
+        .fill()
+        .map((v) => v),
+    }
   },
 }
 </script>
