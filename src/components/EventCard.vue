@@ -1,17 +1,17 @@
-/* eslint-disable vue/no-parsing-error */
 <template>
   <div class="all__events__card">
-    <figure>
+    <figure v-lazyload>
       <img
         class="w-full h-full object-cover"
-         src="../assets/event.jpg"
+        :src="eventItem?.image_url"
+        :data-url="eventItem?.image_url"
         alt="Event Image"
       />
     </figure>
     <div class="flex justify-between items-start mb-3">
-      <h2 class="text-title">{{ eventItem.title || 'Event Title' }}</h2>
+      <h2 class="text-title">{{ eventItem.title  }}</h2>
       <div class="date-badge">
-        <h4>{{ eventItem.title || '31 Oct' }}</h4>
+        <h4>31 Oct</h4>
       </div>
     </div>
     <div class="flex flex-col">
@@ -23,9 +23,11 @@
       </div>
       <div class="flex items-center mb-3">
         <ticket-icon class="mr-2" />
-        <p>
-          Starting from
-          <span>{{ eventItem.id }}</span>
+        <p class="flex items-center">
+          <span class="mr-2">Starting from</span>
+          <span class="font-semibold text-base text-primary-main">
+            ₦&nbsp;{{ eventItem.price.toLocaleString() }}
+          </span>
         </p>
       </div>
       <div>
@@ -44,8 +46,6 @@
 
 <script>
 
-
-
 export default {
   name: "EventCard",
   props: {
@@ -57,8 +57,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
-
+<style lang="scss" scoped>
 .all__events__card {
   @apply w-full bg-white p-4 min-h-300 rounded-xxs;
 }
@@ -81,9 +80,6 @@ p {
 }
 
 a {
-  @apply py-2 text-xs rounded-md cursor-pointer;
+  @apply w-full sm:w-max  py-2 text-xs rounded-md cursor-pointer;
 }
 </style>
-
-
-

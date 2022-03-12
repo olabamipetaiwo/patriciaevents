@@ -1,14 +1,14 @@
 <template>
   <svg
-    width="12"
-    height="7"
-    viewBox="0 0 12 7"
+    width="11"
+    height="11"
+    viewBox="0 0 11 11"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M10.3334 1.33334L6.00002 6.00001L1.66669 1.33334"
-      stroke="black"
+      d="M3.66669 10.2667L8.80002 5.5L3.66669 0.733337"
+      stroke="#372AA4"
       stroke-linecap="square"
     />
   </svg>
@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: "CaretDownIcon",
+  name: "CaretRightIcon",
 }
 </script>

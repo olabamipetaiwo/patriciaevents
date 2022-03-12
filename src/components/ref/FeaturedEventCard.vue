@@ -1,40 +1,37 @@
 <template>
-  <div class="featured__card">
-    <figure v-lazyload>
+  <div class="featured__events__card">
+    <figure>
       <img
         class="w-full h-full object-cover"
-        :src="eventItem?.image_url"
-        :data-url="eventItem?.image_url"
+        v-bind:src="eventItem?.artist.thumb_url"
         alt="Event Image"
       />
     </figure>
     <h2 class="text-title mb-3">{{ eventItem.title || 'Event Title' }}</h2>
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+    <div class="flex items-center justify-between">
       <div class="flex flex-col">
         <div class="flex items-center mb-4">
           <div class="flex items-center mr-7">
             <location-icon class="mr-2" />
-            <p>{{ eventItem?.venue?.location }}</p>
+            <p>{{ eventItem.venue.location }}</p>
           </div>
           <div class="flex items-center">
             <date-icon class="mr-2" />
-            <p>{{ new Date(eventItem?.datetime).getDate() }}</p>
+            <p>{{ new Date(eventItem.datetime).getDate() }}</p>
           </div>
         </div>
         <div class="flex items-center">
           <ticket-icon class="mr-2" />
-          <p class="flex items-center">
-            <span class="mr-2">Starting from</span>
-            <span class="font-semibold text-base text-primary-main">
-              ₦&nbsp;3,000
-            </span>
+          <p>
+            Starting from
+            <span>15,000</span>
           </p>
         </div>
       </div>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        class="btn btn-outline flex items-center justify-center mt-4 sm:mt-0"
+        class="btn btn-outline"
         :href="eventItem.url"
       >
         Buy Ticket
@@ -44,9 +41,8 @@
 </template>
 
 <script>
-
 export default {
-  name: "FeaturedCard",
+  name: "FeaturedEventCard",
   props: {
     eventItem: {
       type: Object,
@@ -56,14 +52,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.featured__card {
-  @apply flex-shrink-0 flex flex-col bg-white h-80 p-4 rounded-lg mr-8 overflow-hidden;
-  flex-basis: 33rem;
-
-  @media only screen and (max-width: 37.5rem) {
-    flex-basis: 100%;
-  }
+<style lang="css" scoped>
+.featured__events__card {
+  @apply w-full bg-white h-80 p-4;
 }
 
 figure {

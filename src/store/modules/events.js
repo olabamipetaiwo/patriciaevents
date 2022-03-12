@@ -6,7 +6,9 @@ import {
   FETCHING_EVENTS,
   SET_FILTER,
   SET_ERROR,
+  CLEAR_ERROR,
 } from "../types";
+import { faker } from "@faker-js/faker";
 
 export default {
   namespaced: true,
@@ -26,9 +28,10 @@ export default {
       return state.filteredEvents.length;
     },
     getFeaturedEvents(state) {
-      return state.allEvents.filter((_eventItem) => {
-        return _eventItem?.artist;
+      const FEATURED_EVENTS = state.allEvents.filter((_eventItem) => {
+        return _eventItem?.featured;
       });
+      return FEATURED_EVENTS;
     },
     getFeaturedEventsLength(state, getters) {
       return getters.getFeaturedEvents.length;
@@ -39,6 +42,7 @@ export default {
       state.allEvents = events;
       state.filteredEvents = events;
       state.fetchingEvents = false;
+      state.error = null;
     },
     [FETCH_FILTERED_EVENTS](state, events) {
       state.filteredEvents = events;
@@ -52,31 +56,51 @@ export default {
     [SET_ERROR](state, error) {
       state.error = error;
     },
+    [CLEAR_ERROR](state) {
+      state.error = null;
+    },
   },
   actions: {
     async fetchEvents({ commit }) {
       try {
         commit(FETCHING_EVENTS);
         const result = await getAllEvents();
-        commit(FETCH_ALL_EVENTS, result.data);
+
+        if (result.data.length > 0) {
+          const FORMATTED_RESPONSE = result.data.map((_item, index) => {
+            return {
+              ..._item,
+              title: faker.vehicle.vehicle(),
+              price: faker.finance.amount(),
+              featured: faker.finance.amount() > 500 ? true : false,
+              image_url: faker.image.city(),
+            };
+          });
+          commit(FETCH_ALL_EVENTS, FORMATTED_RESPONSE);
+        } else {
+          commit(FETCH_ALL_EVENTS, []);
+          commit(SET_ERROR, "No upcoming events for this artiste");
+        }
       } catch (error) {
         commit(SET_ERROR, "Error Occured");
       }
     },
     filterEvents({ state, commit }, searchInput) {
-      const regEx = new RegExp(`${searchInput}`, "gi");
-      commit(SET_FILTER, searchInput);
-      const result = state.allEvents.filter((eventItem) => {
-        return (
-          // eventItem?.title.match(regEx) ||
-          eventItem?.artist?.name.match(regEx) ||
-          eventItem?.description.match(regEx) ||
-          eventItem?.venue?.name.match(regEx) ||
-          eventItem?.venue?.location.match(regEx)
-        );
-      });
-
-      commit(FETCH_FILTERED_EVENTS, result);
+      try {
+        commit(CLEAR_ERROR);
+        const regEx = new RegExp(`${searchInput}`, "gi");
+        commit(SET_FILTER, searchInput);
+        const result = state.allEvents.filter((eventItem) => {
+          return (
+            eventItem?.title.match(regEx) ||
+            eventItem?.artist?.name.match(regEx) ||
+            eventItem?.description.match(regEx)
+          );
+        });
+        commit(FETCH_FILTERED_EVENTS, result);
+      } catch (err) {
+        commit(SET_ERROR, `Invalid SearchInpuut ${searchInput}`);
+      }
     },
   },
 };

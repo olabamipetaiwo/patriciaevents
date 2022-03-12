@@ -3,4 +3,5 @@ export const FETCH_FILTERED_EVENTS = "FETCH_FILTERED_EVENTS";
 export const FETCHING_EVENTS = "FETCHING_EVENTS";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SET_FILTER = "SET_FILTER";
-export const SET_ERROR = "SET_ERROR ";
+export const SET_ERROR = "SET_ERROR";
+export const CLEAR_ERROR = "CLEAR_ERROR";
