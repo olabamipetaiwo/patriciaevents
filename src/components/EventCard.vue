@@ -11,7 +11,7 @@
     <div class="flex justify-between items-start mb-3">
       <h2 class="text-title">{{ eventItem.title  }}</h2>
       <div class="date-badge">
-        <h4>31 Oct</h4>
+        <h4>{{ this.formatDate(eventItem?.datetime)[0] }}</h4>
       </div>
     </div>
     <div class="flex flex-col">
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { formatDate } from "@/utils/functions.js"
 
 export default {
   name: "EventCard",
@@ -53,6 +54,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    formatDate,
   },
 }
 </script>

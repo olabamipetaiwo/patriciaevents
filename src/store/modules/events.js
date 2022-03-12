@@ -72,6 +72,7 @@ export default {
               ..._item,
               title: faker.vehicle.vehicle(),
               price: faker.finance.amount(),
+              description:faker.name.jobDescriptor(),
               featured: faker.finance.amount() > 500 ? true : false,
               image_url: faker.image.city(),
             };
@@ -99,7 +100,7 @@ export default {
         });
         commit(FETCH_FILTERED_EVENTS, result);
       } catch (err) {
-        commit(SET_ERROR, `Invalid SearchInpuut ${searchInput}`);
+        commit(SET_ERROR, `Invalid SearchInput ${searchInput}`);
       }
     },
   },

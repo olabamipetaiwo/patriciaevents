@@ -22,7 +22,8 @@ app.component("location-icon", LocationIcon);
 app.component("naira-icon", NairaIcon);
 app.component("search-icon", SearchIcon);
 app.component("ticket-icon", TicketIcon);
-
 app.directive("lazyload", LazyLoadDirective);
+
+
 
 app.use(store).use(router).mount("#app");
