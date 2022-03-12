@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full flex flex-col py-20">
+  <section class="w-full flex flex-col py-20"  data-cy="home-container">
     <app-header />
     <error-alert />
     <section class="grid lg:grid-cols-4 gap-8" v-if="fetchingEvents">
@@ -8,7 +8,7 @@
 
     <fragment v-else>
       <!-- Searched Events -->
-      <search-events />
+      <search-events v-if="getFilteredEventsLength > 0"/>
       <!-- Searched Events -->
       <!-- Featured Events -->
       <fragment>
@@ -52,9 +52,9 @@ import { mapState, mapActions, mapGetters } from "vuex"
 import AllEvents from "@/containers/AllEvents.vue"
 import SearchEvents from "@/components/SearchEvents.vue"
 import Loader from "@/components/Loader.vue"
-import Featured from "../containers/Featured.vue"
-import AppHeader from "../components/Header.vue"
-import ErrorAlert from "../components/ErrorAlert.vue"
+import Featured from "@/containers/Featured.vue"
+import AppHeader from "@/components/AppHeader.vue"
+import ErrorAlert from "@/components/ErrorAlert.vue"
 
 export default {
   components: { AllEvents, SearchEvents, Loader, Featured, AppHeader, ErrorAlert },

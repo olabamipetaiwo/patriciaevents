@@ -33,8 +33,9 @@ module.exports = {
         badge: "url('/src/assets/badge.png')",
       },
       gridTemplateColumns: {
-        all__events: "repeat(auto-fit, minmax(15.625rem, 1fr))",
-        featured__events: "repeat(auto-fit, minmax(32.75rem, 32.75rem))",
+        all__events: "repeat(auto-fit,15.625rem)",
+        // all__events: "repeat(auto-fit, minmax(15.625rem, 1fr))",
+        featured__events: "repeat(auto-fit, 32.75rem)",
       },
       colors: {
         dark: "#2F2F2F",

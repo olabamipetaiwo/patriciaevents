@@ -10,6 +10,54 @@ import {
 } from "../types";
 import { faker } from "@faker-js/faker";
 
+export const eventActions = {
+  async fetchEvents({ commit }) {
+    try {
+      commit(FETCHING_EVENTS);
+      const result = await getAllEvents();
+
+      if (result.data.length > 0) {
+        const FORMATTED_RESPONSE = result.data.map((_item) => {
+          const EVENT_PRICE = faker.finance.amount();
+          return {
+            ..._item,
+            title: faker.vehicle.vehicle(),
+            price: EVENT_PRICE,
+            description: faker.name.jobDescriptor(),
+            featured: EVENT_PRICE > 500 ? true : false,
+            image_url: faker.image.city(),
+          };
+        });
+        commit(FETCH_ALL_EVENTS, FORMATTED_RESPONSE);
+      } else {
+        commit(FETCH_ALL_EVENTS, []);
+        commit(SET_ERROR, "No upcoming events for this artiste");
+      }
+    } catch (error) {
+      commit(SET_ERROR, "Error Occured");
+    }
+  },
+  filterEvents({ state, commit }, searchInput) {
+    try {
+      commit(CLEAR_ERROR);
+      const regEx = new RegExp(`${searchInput}`, "gi");
+      commit(SET_FILTER, searchInput);
+      const result = state.allEvents.filter((eventItem) => {
+        return (
+          eventItem?.title.match(regEx) ||
+          eventItem?.artist?.name.match(regEx) ||
+          eventItem?.description.match(regEx) ||
+          eventItem?.venue?.city.match(regEx) ||
+          eventItem?.venue?.location.match(regEx)
+        );
+      });
+      commit(FETCH_FILTERED_EVENTS, result);
+    } catch (err) {
+      commit(SET_ERROR, `Invalid SearchInput ${searchInput}`);
+    }
+  },
+};
+
 export default {
   namespaced: true,
   state: {
@@ -60,48 +108,5 @@ export default {
       state.error = null;
     },
   },
-  actions: {
-    async fetchEvents({ commit }) {
-      try {
-        commit(FETCHING_EVENTS);
-        const result = await getAllEvents();
-
-        if (result.data.length > 0) {
-          const FORMATTED_RESPONSE = result.data.map((_item, index) => {
-            return {
-              ..._item,
-              title: faker.vehicle.vehicle(),
-              price: faker.finance.amount(),
-              description:faker.name.jobDescriptor(),
-              featured: faker.finance.amount() > 500 ? true : false,
-              image_url: faker.image.city(),
-            };
-          });
-          commit(FETCH_ALL_EVENTS, FORMATTED_RESPONSE);
-        } else {
-          commit(FETCH_ALL_EVENTS, []);
-          commit(SET_ERROR, "No upcoming events for this artiste");
-        }
-      } catch (error) {
-        commit(SET_ERROR, "Error Occured");
-      }
-    },
-    filterEvents({ state, commit }, searchInput) {
-      try {
-        commit(CLEAR_ERROR);
-        const regEx = new RegExp(`${searchInput}`, "gi");
-        commit(SET_FILTER, searchInput);
-        const result = state.allEvents.filter((eventItem) => {
-          return (
-            eventItem?.title.match(regEx) ||
-            eventItem?.artist?.name.match(regEx) ||
-            eventItem?.description.match(regEx)
-          );
-        });
-        commit(FETCH_FILTERED_EVENTS, result);
-      } catch (err) {
-        commit(SET_ERROR, `Invalid SearchInput ${searchInput}`);
-      }
-    },
-  },
+  actions: eventActions,
 };

@@ -1,16 +1,16 @@
 <template>
-  <header class="flex items-center justify-between mb-10">
+  <header class="flex items-center justify-between mb-10" data-cy="app-header">
     <div class="header__left">
       <h2 class="font-display font-bold text-2xl text-dark">Events</h2>
     </div>
     <div class="header__right">
       <div class="flex items-center">
         <figure class="w-9 h-9 overflow-hidden rounded-sm mr-4">
-          <img
+          <!-- <img
             class="w-full h-full"
             src="../assets/profile.jpg"
             alt="Profile Picture"
-          />
+          /> -->
         </figure>
         <h6 class="font-display font-bold text-base text-dark mr-4">
           Bernice
