@@ -1,9 +1,7 @@
 <template>
   <section class="w-full flex flex-col py-20">
-    <Header />
-
+    <app-header />
     <error-alert />
-
     <section class="grid lg:grid-cols-4 gap-8" v-if="fetchingEvents">
       <loader v-for="_item in this.loaders" :key="_item" />
     </section>
@@ -55,15 +53,14 @@ import AllEvents from "@/containers/AllEvents.vue"
 import SearchEvents from "@/components/SearchEvents.vue"
 import Loader from "@/components/Loader.vue"
 import Featured from "../containers/Featured.vue"
-import Header from "../components/Header.vue"
+import AppHeader from "../components/Header.vue"
 import ErrorAlert from "../components/ErrorAlert.vue"
 
 export default {
-  components: { AllEvents, SearchEvents, Loader, Featured, Header,
-    ErrorAlert },
+  components: { AllEvents, SearchEvents, Loader, Featured, AppHeader, ErrorAlert },
   name: "Home",
   created() {
-    this.$store.dispatch("events/fetchEvents")
+    this.fetchEvents();
   },
   computed: {
     ...mapState("events", ["allEvents", "filterKeyWord", "fetchingEvents"]),
@@ -73,7 +70,7 @@ export default {
     ]),
   },
   methods: {
-    ...mapActions("events", ["filterEvents"]),
+    ...mapActions("events", ["fetchEvents"]),
   },
   data() {
     return {
