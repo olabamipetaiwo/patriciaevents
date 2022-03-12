@@ -18,7 +18,7 @@
           </div>
           <div class="flex items-center">
             <date-icon class="mr-2" />
-            <p>{{ new Date(eventItem?.datetime).getDate() }}</p>
+            <p>{{ this.formatDate(eventItem?.datetime)[1] }}</p>
           </div>
         </div>
         <div class="flex items-center">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-
+import { formatDate } from "@/utils/functions.js"
 export default {
   name: "FeaturedCard",
   props: {
@@ -52,6 +52,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    formatDate,
   },
 }
 </script>

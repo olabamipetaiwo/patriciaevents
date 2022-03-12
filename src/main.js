@@ -25,4 +25,6 @@ app.component("ticket-icon", TicketIcon);
 
 app.directive("lazyload", LazyLoadDirective);
 
+
+
 app.use(store).use(router).mount("#app");
