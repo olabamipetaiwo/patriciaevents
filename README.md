@@ -13,7 +13,6 @@ Features
 Git clone the repository via  https://github.com/olabamipetaiwo/patriciaevents.git
 Run yarn install to get the neccessary dependencies
 Run yarn serve to start the application locally
-<!-- Run yarn cy-test to run the tests -->
 
 Approach Taken:
 
@@ -21,11 +20,10 @@ Managed State with the Vuex
 Separated the Store into modules for the purpose of scalability (WE can decide to add authenticationn to the app later)
 Tailwind CSS and DartSCSS was used for the styling of the app
 
-<!-- Wrote Tests with Cypress -->
 
 Areas to improve upon:
-The response gottent from the API endpoint can be written in such a way that it returns uniform objects from all event item
-
+The response gottent from the API endpoint can be written in such a way that it returns uniform objects from all event item.
+Pagination 
 
 
 
