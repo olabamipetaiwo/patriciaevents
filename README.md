@@ -23,7 +23,8 @@ Tailwind CSS and DartSCSS was used for the styling of the app
 
 Areas to improve upon:
 The response gottent from the API endpoint can be written in such a way that it returns uniform objects from all event item.
-Pagination 
+Pagination
+Advanced Filtering from the backend
 
 
 
