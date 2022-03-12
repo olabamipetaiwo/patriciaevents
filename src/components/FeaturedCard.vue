@@ -26,7 +26,7 @@
           <p class="flex items-center">
             <span class="mr-2">Starting from</span>
             <span class="font-semibold text-base text-primary-main">
-              ₦&nbsp;3,000
+              ₦&nbsp;{{ eventItem.price.toLocaleString() }}
             </span>
           </p>
         </div>
