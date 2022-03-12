@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./styles/main.scss";
-// import Dayjs from "vue-dayjs";
+import LazyLoadDirective from "./directives/LazyLoadDirective";
 
 import CaretDownIcon from "./components/icons/CaretDown.vue";
 import CaretRightIcon from "./components/icons/CaretRight.vue";
@@ -23,8 +23,6 @@ app.component("naira-icon", NairaIcon);
 app.component("search-icon", SearchIcon);
 app.component("ticket-icon", TicketIcon);
 
-// app.use(Dayjs, {
-//   lang: "en",
-// });
+app.directive("lazyload", LazyLoadDirective);
 
 app.use(store).use(router).mount("#app");

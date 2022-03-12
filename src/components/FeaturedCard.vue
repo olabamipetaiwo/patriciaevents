@@ -1,9 +1,10 @@
 <template>
   <div class="featured__card">
-    <figure>
+    <figure v-lazyload>
       <img
         class="w-full h-full object-cover"
-        v-bind:src="eventItem?.artist.thumb_url"
+        :src="eventItem?.image_url"
+        :data-url="eventItem?.image_url"
         alt="Event Image"
       />
     </figure>
@@ -13,11 +14,11 @@
         <div class="flex items-center mb-4">
           <div class="flex items-center mr-7">
             <location-icon class="mr-2" />
-            <p>{{ eventItem.venue.location }}</p>
+            <p>{{ eventItem?.venue?.location }}</p>
           </div>
           <div class="flex items-center">
             <date-icon class="mr-2" />
-            <p>{{ new Date(eventItem.datetime).getDate() }}</p>
+            <p>{{ new Date(eventItem?.datetime).getDate() }}</p>
           </div>
         </div>
         <div class="flex items-center">
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   name: "FeaturedCard",
   props: {

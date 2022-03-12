@@ -1,16 +1,17 @@
 <template>
   <div class="all__events__card">
-    <figure>
+    <figure v-lazyload>
       <img
         class="w-full h-full object-cover"
-        src="../assets/event.jpg"
+        :src="eventItem?.image_url"
+        :data-url="eventItem?.image_url"
         alt="Event Image"
       />
     </figure>
     <div class="flex justify-between items-start mb-3">
-      <h2 class="text-title">{{ eventItem.title || 'Event Title' }}</h2>
+      <h2 class="text-title">{{ eventItem.title  }}</h2>
       <div class="date-badge">
-        <h4>{{ eventItem.title || '31 Oct' }}</h4>
+        <h4>31 Oct</h4>
       </div>
     </div>
     <div class="flex flex-col">
@@ -25,7 +26,7 @@
         <p class="flex items-center">
           <span class="mr-2">Starting from</span>
           <span class="font-semibold text-base text-primary-main">
-            ₦&nbsp;3,000
+            ₦&nbsp;{{ eventItem.price.toLocaleString() }}
           </span>
         </p>
       </div>
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+
 export default {
   name: "EventCard",
   props: {
