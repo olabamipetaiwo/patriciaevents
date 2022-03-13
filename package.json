@@ -31,7 +31,6 @@
     "@vue/test-utils": "^2.0.0-0",
     "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
-    "cypress-vue-unit-test": "^3.5.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "postcss": "^7",

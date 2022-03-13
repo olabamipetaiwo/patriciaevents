@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
-import EventCard from "../../src/components/EventCard.vue";
+import FeaturedCard from "../../src/components/FeaturedCard.vue";
 
-describe("EventCard.vue", () => {
+describe("FeaturedCard.vue", () => {
   it("renders props.msg when passed", () => {
     const eventItem = {
       "offers": [
@@ -78,7 +78,7 @@ describe("EventCard.vue", () => {
       "id": "103034189",
       "festival_end_date": ""
     };
-    const wrapper = shallowMount(EventCard, {
+    const wrapper = shallowMount(FeaturedCard, {
       props: { eventItem },
     });
 

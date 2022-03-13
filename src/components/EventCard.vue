@@ -34,7 +34,7 @@
         <a
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-outline"
+          class="btn btn-outline buy-ticket"
           :href="eventItem.url"
         >
           Buy Ticket

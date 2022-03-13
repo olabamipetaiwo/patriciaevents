@@ -4,6 +4,7 @@
       <search-icon />
       <input
         v-model="searchInput"
+        data-cy="searchInput"
         type="text"
         placeholder="Search event by name or venue"
       />
