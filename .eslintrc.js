@@ -26,5 +26,3 @@ module.exports = {
   ],
 };
 
-// "eslint-plugin-prettier": "^3.3.1",
-//     "@vue/eslint-config-prettier": "^6.0.0",

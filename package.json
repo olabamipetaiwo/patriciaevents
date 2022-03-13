@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
     "@faker-js/faker": "^6.0.0-beta.0",
@@ -13,18 +15,23 @@
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-template-compiler": "^2.6.14",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.11.1",
     "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-e2e-cypress": "^5.0.1",
     "@vue/cli-plugin-eslint": "~4.5.13",
     "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-plugin-unit-jest": "~4.5.13",
     "@vue/cli-plugin-vuex": "~4.5.13",
     "@vue/cli-service": "~4.5.13",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "autoprefixer": "^9",
     "babel-eslint": "^10.1.0",
+    "cypress-vue-unit-test": "^3.5.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "postcss": "^7",
@@ -33,8 +40,6 @@
     "sass-loader": "^8.0.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "~3.9.3",
-    "vue-jest": "^5.0.0-0",
-    "vue-loader": "^17.0.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-jest": "^3.0.7"
   }
 }
