@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
 import EventCard from "../../src/components/EventCard.vue";
 
-describe("HelloWorld.vue", () => {
+describe("EventCard.vue", () => {
   it("renders props.msg when passed", () => {
     const eventItem = {
       "offers": [
